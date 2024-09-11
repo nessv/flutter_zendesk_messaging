@@ -155,6 +155,20 @@ class ZendeskMessagingPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 }
                 zendeskMessaging.invalidate()
             }
+            "setPushNotificationsToken" -> {
+                if (!isInitialized) {
+                    println("$tag - Messaging needs to be initialized first")
+                    return
+                }
+                
+                val token = call.argument<String>("token")
+                
+                if (token == null || token.isEmpty()) {
+                    throw Exception("Token is empty or null")
+                }
+
+                zendeskMessaging.setPushNotifications(token)
+            }
             else -> {
                 result.notImplemented()
             }
