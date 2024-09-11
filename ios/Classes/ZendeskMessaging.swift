@@ -127,4 +127,8 @@ public class ZendeskMessaging: NSObject {
     func clearConversationFields() {
         Zendesk.instance?.messaging?.clearConversationFields()
     }
+
+    func setPushNotificationsToken(token: String) {
+        PushNotifications.updatePushNotificationToken(token)
+    }
 }
