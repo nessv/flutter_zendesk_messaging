@@ -129,6 +129,10 @@ public class ZendeskMessaging: NSObject {
     }
 
     func setPushNotificationsToken(token: String) {
-        PushNotifications.updatePushNotificationToken(token)
+        if let tokenData = token.data(using: .utf8) {
+            PushNotifications.updatePushNotificationToken(tokenData)
+        } else {
+            print("\(self.TAG) - Failed to convert token to Data")
+        }
     }
 }
