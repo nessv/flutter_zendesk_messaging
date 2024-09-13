@@ -136,7 +136,7 @@ class ZendeskMessaging(private val plugin: ZendeskMessagingPlugin, private val c
         Zendesk.instance.messaging.clearConversationFields()
     }
 
-    func setPushNotifications(token: String) {
+    fun setPushNotifications(token: String) {
         PushNotifications.updatePushNotificationToken(token)
     }
 }
